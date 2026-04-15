@@ -1,26 +1,59 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@plugin "tailwindcss-animate";
+
+@theme {
+  /* ==========================================
+     视觉与主题规范 (Design Tokens) - Semantic HSL Colors
+     ⚠️ 遵守规范: 摒弃 oklch, 全面使用 HSL 保证全端兼容性
+     ========================================== */
+  
+  /* --- 颜色 Colors --- */
+  --color-background: hsl(0, 0%, 3%);            /* 极简深空黑，#080808 */
+  --color-foreground: hsl(0, 0%, 98%);           /* 接近纯白，用于正文 */
+
+  --color-primary: hsl(43, 30%, 65%);            /* 奢华淡金色 (Luxury Gold) */
+  --color-primary-foreground: hsl(0, 0%, 0%);
+
+  --color-muted: hsl(0, 0%, 15%);                /* 极深灰，用于卡片底色或边框 */
+  --color-muted-foreground: hsl(0, 0%, 60%);     /* 灰色，用于次要文本 */
+
+  --color-border: hsl(0, 0%, 15%);               /* 柔和的边框分隔线 */
+
+  /* --- 字体 Typography --- */
+  /* 通过 CSS 变量对接 Next.js Font 注入 */
+  --font-sans: var(--font-inter), sans-serif;
+  --font-serif: var(--font-playfair), var(--font-noto-serif), serif; /* 双拼：英文字体在前，中文思源宋体在后 */
+  --font-text: var(--font-cormorant), var(--font-noto-serif), serif;
+  
+  /* --- 间距与字号追加 (如需覆盖默认体系) --- */
+  --spacing-container: 2rem;       /* 侧边默认安全距离 */
+  --spacing-section: 6rem;         /* 垂直区块默认间距 */
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  * {
+    border-color: var(--color-border);
   }
-}
+  
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    /* 强制使用高级无衬线字体作为全站基底，特定标题再用 serif */
+    font-family: var(--font-sans);
+    /* 优化抗锯齿，增强苹果设备的奢华字重质感 */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* 隐藏所有原生的滚动回弹白色背景 (iOS) */
+    overscroll-behavior-y: none;
+  }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* 针对 Lenis 平滑滚动的核心托底 */
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+  
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
 }

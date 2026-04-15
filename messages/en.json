@@ -1,0 +1,15 @@
+{
+  "Index": {
+    "title": "Semporna<br />Blue Bay",
+    "subtitle": "Exclusive Island Resort",
+    "description": "This tranquil haven surrounded by fine sand is located in the heart of Semporna, boasting stunning sea views. Spacious overwater bungalow suites, beachfront villas and underwater adventures await you here.",
+    "exploreBtn": "EXPLORE VILLAS & SUITES",
+    "scrollDown": "Scroll down to awaken more beauty",
+    "bookingBarTitle": "Booking Bar Testing Area...",
+    "bookingBarDesc": "In the next development phase, we will mount a Drawer, a custom Date Picker, and integrate shadcn components with React Hook Form here."
+  },
+  "LocaleLayout": {
+    "title": "Semporna Blue Bay Resort | Exclusive Island Resort",
+    "description": "An all-suite private island paradise in the heart of the ocean."
+  }
+}

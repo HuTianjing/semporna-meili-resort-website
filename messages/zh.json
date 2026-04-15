@@ -1,0 +1,15 @@
+{
+  "Index": {
+    "title": "仙本那蓝湾度假酒店",
+    "subtitle": "Semporna Blue Bay Resort",
+    "description": "这座细沙环绕的静逸桃源位于仙本那中心，坐拥海上的绝美景致。宽敞的水上别墅套房、海滨别墅和水底探险奇遇在此静候您的到来。",
+    "exploreBtn": "探索别墅与套房",
+    "scrollDown": "向下滚动以唤醒更多美景",
+    "bookingBarTitle": "Booking Bar 测试区域...",
+    "bookingBarDesc": "接下来的开发阶段，我们将会在这里挂载抽屉(Drawer)、高定日期选择器等功能交互，并整合 shadcn 组件与 React Hook Form。"
+  },
+  "LocaleLayout": {
+    "title": "仙本那蓝湾度假酒店 | Semporna Blue Bay Resort",
+    "description": "法属波利尼西亚中心的全套房私人海岛天堂。"
+  }
+}
