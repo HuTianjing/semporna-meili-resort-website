@@ -39,6 +39,7 @@ const fontNotoSerif = Noto_Serif_SC({
 });
 
 import SmoothScrolling from '@/components/SmoothScrolling';
+import { Header } from '@/components/layout/Header';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
@@ -74,7 +75,10 @@ export default async function RootLayout({
           antialiased min-h-screen bg-background text-foreground flex flex-col
         `}
       >
-        <SmoothScrolling>{children}</SmoothScrolling>
+        <SmoothScrolling>
+          <Header />
+          {children}
+        </SmoothScrolling>
       </body>
     </html>
   );

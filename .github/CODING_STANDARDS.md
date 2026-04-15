@@ -54,9 +54,7 @@ Tailwind CSS v4 默认启用了包括 `oklch()` 甚至 `color-mix()` 等最前�
 - ✅ **配置向下编译目标**：如果在配置中使用了现代 CSS 颜色混合函数，必须配置 LightningCSS（v4 默认打包引擎）或 PostCSS 增加对早期浏览器版本（如 iOS 14）的 Target 编译降级，确保打包出的 CSS 文件含有安全的 `rgba` 或 `hex` Fallback。
 - 🚫 **杜绝透明颜色带来的解析异常**：由于老的 WebView 对 `css variables` 配合 `opacity`（例如 `<div class="bg-primary/50">`）支持度不够，关键按钮和文字尽可能使用实色。
 
-## 6. 代码提交规范与严格类型检查
+## 7. 组件拆分与自适应规范 (Component Split & Responsive)
 
-- 🚫 **修改即查 (Zero TypeScript Error 策略)**：
-  任何一次针对组件、页面或工具库的修改之后，**必须立刻运行 `pnpm tsc --noEmit` 进行全量类型检查**，且不允许有任何 TS Error 遗留。如果遇到不可知的第三方库类型报错，需显式声明 `declare module` 或者利用 `Parameters`, `ReturnType` 提取类型进行安全转化。
-- 每次提交前必须在本地通过 `npm run lint` (ESLint 检查) 和 `npm run type-check` (TypeScript 检查)。
-- Commit 描述需遵循 Conventional Commits（例如 `feat: add booking bar`, `fix: mobile drawer height`）。
+- ✅ **合理拆分组件 (SMART Split)**：禁止将几百行代码揉在一个文件中。必须按功能模块和职责严格拆分（如将头部大区块拆分为 `Header.tsx`, `BookingBar.tsx`, `Hero.tsx`）。每个组件应保持单一职责原则，提高代码的可读性与复用性。
+- ✅ **移动端优先与极度自适应 (Mobile First & Highly Responsive)**：**绝对强调！**所有页面和组件的核心结构必须首先考虑移动端的垂直堆叠体验，然后再通过 `md:`, `lg:`, `xl:` 等响应式断点适配桌面端的复杂网格或横向排列。绝对不允许出现因为固定宽度 (fixed widths) 导致移动端内容溢出、破版或出现横向滚动条的情况。在使用相对定位的重叠层（如 Hero 图片与 Header）时，必须处理好各断点高度坍塌的问题。

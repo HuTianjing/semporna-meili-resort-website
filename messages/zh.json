@@ -1,15 +1,33 @@
 {
   "Index": {
-    "title": "仙本那蓝湾度假酒店",
+    "title": "波拉波拉",
     "subtitle": "Semporna Blue Bay Resort",
-    "description": "这座细沙环绕的静逸桃源位于仙本那中心，坐拥海上的绝美景致。宽敞的水上别墅套房、海滨别墅和水底探险奇遇在此静候您的到来。",
+    "description": "这座细沙环绕的静逸桃源位于法属波利尼西亚中心，坐拥海上的绝美景致。宽敞的水上别墅套房、海滨别墅和水底探险奇遇在此静候您的到来。",
     "exploreBtn": "探索别墅与套房",
-    "scrollDown": "向下滚动以唤醒更多美景",
-    "bookingBarTitle": "Booking Bar 测试区域...",
-    "bookingBarDesc": "接下来的开发阶段，我们将会在这里挂载抽屉(Drawer)、高定日期选择器等功能交互，并整合 shadcn 组件与 React Hook Form。"
+    "scrollDown": "向下滚动以唤醒更多美景"
   },
   "LocaleLayout": {
     "title": "仙本那蓝湾度假酒店 | Semporna Blue Bay Resort",
     "description": "法属波利尼西亚中心的全套房私人海岛天堂。"
+  },
+  "Header": {
+    "allHotels": "所有酒店及度假酒店",
+    "login": "登入",
+    "language": "简体中文",
+    "brand": "四季度假酒店",
+    "resort": "波拉波拉群岛四季度假酒店",
+    "nav1": "酒店概览",
+    "nav2": "别墅与套房",
+    "nav3": "图片与视频",
+    "nav4": "位置",
+    "nav5": "优惠精选",
+    "nav6": "联系我们"
+  },
+  "BookingBar": {
+    "dates": "登记入住 - 退房",
+    "guests": "宾客",
+    "promo": "促销",
+    "promoCode": "促销代码",
+    "submit": "查看房价"
   }
 }
