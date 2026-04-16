@@ -96,41 +96,33 @@ export function Hero() {
             </div>
           </div>
 
-          {/* 右下角卡片 - 滚动时向右淡出 */}
+          {/* 右下角白色半透明卡片 - 滚动时向右淡出 */}
           <motion.div 
-            className="absolute bottom-12 md:bottom-16 lg:bottom-20 right-6 md:right-10 lg:right-12 z-10 hidden lg:flex gap-2"
+            className="absolute bottom-12 md:bottom-16 lg:bottom-20 right-6 md:right-10 lg:right-12 z-10 hidden lg:block"
             style={{ x: cardsX, opacity: cardsOpacity }}
           >
-            {[
-              { icon: 'location', label: t('location') },
-              { icon: 'villa', label: t('villasLabel') },
-              { icon: 'gallery', label: t('galleryLabel') },
-            ].map((item, index) => (
-              <div 
-                key={index}
-                className="w-[100px] h-[68px] bg-black/40 backdrop-blur-sm flex flex-col items-center justify-center gap-2 cursor-pointer hover:bg-black/50 transition-all duration-300"
+            <div className="w-[340px] bg-white/95 backdrop-blur-sm p-8">
+              {/* 欢迎文案 */}
+              <p 
+                className="text-xl text-black/80 mb-6 leading-relaxed"
+                style={{ fontFamily: 'var(--font-serif)' }}
               >
-                <div className="text-white/70">
-                  {item.icon === 'location' && (
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1}>
-                      <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  )}
-                  {item.icon === 'villa' && (
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1}>
-                      <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                    </svg>
-                  )}
-                  {item.icon === 'gallery' && (
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={1}>
-                      <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
-                  )}
-                </div>
-                <span className="text-[9px] text-white/70 tracking-[0.1em] uppercase font-light">{item.label}</span>
-              </div>
-            ))}
+                欢迎，下一趟旅程等待您开启。
+              </p>
+              
+              {/* 查看房价按钮 */}
+              <button className="w-full bg-black text-white text-sm tracking-wider py-4 mb-5 hover:bg-black/90 transition-colors">
+                查看房价
+              </button>
+              
+              {/* 我已经有预订 链接 */}
+              <a 
+                href="#booking" 
+                className="text-sm text-black/70 border-b border-black/40 pb-0.5 hover:text-black hover:border-black transition-colors"
+              >
+                我已经有预订
+              </a>
+            </div>
           </motion.div>
 
           {/* 右下角播放/暂停按钮 */}
@@ -151,10 +143,10 @@ export function Hero() {
             )}
           </button>
 
-          {/* 桌面端暂停按钮 - 右下角卡片旁 */}
+          {/* 桌面端暂停按钮 - 卡片下方 */}
           <button 
             onClick={() => setIsPlaying(!isPlaying)}
-            className="absolute bottom-12 md:bottom-16 lg:bottom-20 right-6 md:right-10 lg:right-[360px] z-10 hidden lg:flex w-11 h-11 rounded-full border border-white/50 items-center justify-center text-white hover:bg-white/10 transition-colors"
+            className="absolute bottom-12 md:bottom-16 lg:bottom-20 right-6 md:right-10 lg:right-[380px] z-10 hidden lg:flex w-11 h-11 rounded-full border border-white/50 items-center justify-center text-white hover:bg-white/10 transition-colors"
             aria-label={isPlaying ? 'Pause' : 'Play'}
           >
             {isPlaying ? (
