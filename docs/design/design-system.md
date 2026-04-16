@@ -102,18 +102,48 @@ export const fontInter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 ### 4.2 动效与交互 (Framer Motion)
 *   **拒绝生硬：** 页面不应有“闪现”的元素。
 *   **滚动揭示 (Scroll Reveal)：** 搭配 `framer-motion` 和 `react-intersection-observer`，实现 Apple 级别的“文字/图片随滚动缓慢上滑进入 (Fade Up)”效果。
-    ```tsx
-    // 典型入场动画设定：
-    initial={{ opacity: 0, y: 40 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }} // 自定义缓动曲线 (Apple-like spring/ease)
-    viewport={{ once: true, margin: "-100px" }}
+*   **视差与滚动联动 (Scroll-linked Animations)：** 
+    对于复杂的交互（如首页首屏的卡片随滚动向右平移并消失、下方白色区域的遮盖视差），利用 Framer Motion 的 `useScroll` 和 `useTransform`，将滚动距离映射为 `translateX`、`y` 和 `opacity`。
+*   **时间轴微交互 (Time-based Animation)：**
+    如首屏底部的“白色竖线循环下滑”提示动效，使用 `animate={{ y: ["0%", "100%"] }}` 和 `transition={{ repeat: Infinity }}` 来实现。
+
+### 4.3 物理顺滑滚动 (Smooth Scrolling - Lenis)
+*   **极致丝滑手感：**
+    像四季酒店这种高奢重视觉官网，原生的浏览器物理滚动会让滚动触发的视差动画显得卡顿。项目已全局引入 `@studio-freight/react-lenis`（`SmoothScrolling.tsx`）。
+*   **参数控制：**
+    保留 `lerp: 0.08` 这种强度的线性插值，使所有基于滚动进度 (Scroll Progress) 触发的 Framer Motion 动画获取真实、奢华的阻尼感和惯性回弹。
+
+### 4.4 玻璃拟态与高级样式 (Glassmorphism & Fallbacks)
+*   **材质表现：**
+    导航栏和预订组件需要大量的玻璃毛玻璃效果，基于 Tailwind 使用 `bg-white/50 backdrop-blur-md` 等工具类。
+*   **优雅降级 (@supports)：**
+    并非所有环境完美支持 `backdrop-filter`。在全局或组件 CSS 中提供优雅降级：
+    ```css
+    @supports not (backdrop-filter: blur(13px)) {
+      .glass-fallback {
+         background: rgba(255, 255, 255, 0.95);
+      }
+    }
     ```
 
-### 4.3 留白与网格系统 (Layout & Grid)
+### 4.5 媒体资源加载策略 (Video & Image Delivery)
+*   **超高清背景视频与 CDN：**
+    首屏 4K 海岛背景视频体积巨大，绝不可打包在项目中阻塞渲染。
+    **方案：** 优先加载极高质量的第一帧作为图片封面（Poster，可用高斯模糊处理过渡），视频资源存放于 CDN，或使用 Mux、阿里云等提供的 HLS/Dash 流媒体实现懒加载与自适应码率分发。
+    
+
+### 4.6 留白与网格系统 (Layout & Grid)
 *   **Container 容器：** 不使用被严格限制宽度的版心（除非阅读大段长文）。多用 `w-full max-w-screen-2xl mx-auto md:px-12 px-6`，留出两翼宽广的空间。
 *   **Section 间距：** 两个模块之间标准间距强制使用 `py-24` (96px) 到 `py-32` (128px)。
 *   **大图呈现：** 使用 `h-[80vh]` 甚至 `h-screen` 作为首屏或特定景色的模块高度，结合 `object-cover` 充满视野。
+
+### 4.7 复杂交互组件库选型 (Carousel & Sticky Header)
+*   **粘性吸顶导航栏 (Sticky Header)：**
+    将 Header 设置为 `fixed top-0 z-50 w-full transition-shadow duration-300`。在组件内部使用 `framer-motion` 内置钩子 `useScroll` 监听 `scrollY` （或者原生的 `window.addEventListener('scroll')`）。当 `scrollY > 0` 滚动事件触发时，追加 `shadow-lg` 阴影或相关 Taildwind className 产生视觉隔离。
+*   **展开式画廊轮播 (Expanding Carousel)：**
+    针对首页“别墅与套房”这种具有核心交互特效的展示（居中 Active 卡展开详情，侧边 Inactive 卡仅显示图像名称），建议使用：
+    1.  **Embla Carousel (通过 `shadcn/ui` Carousel组件实现)**：负责高性能的多端拖拽、触摸横向滑动以及对其当前选中项（activeIndex）状态的捕获。
+    2.  **Framer Motion `layout` 属性与 `AnimatePresence`**：结合当前获取的 activeIndex 传递给单独每个幻灯片组件，当组件处于 active 时，其内部对应的文字及 CTA 区块（如 `<motion.div layout>`）借由 Framer Motion 提供的强大的平滑弹簧式过渡（Tween & Layout Animation）撑开高度并出现，以此完成类似手风琴、丝滑伸缩尺寸变化的高级反馈效果。
 
 ---
 
