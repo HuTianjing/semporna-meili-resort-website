@@ -38,6 +38,8 @@ const fontNotoSerif = Noto_Serif_SC({
   weight: ['400', '600', '700'],
 });
 
+import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
 import { Header } from '@/components/layout/Header';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -58,13 +60,10 @@ export default async function RootLayout({
   params: Promise<{ locale: string }>;
 }>) {
   const { locale } = await params;
+  const messages = await getMessages();
   
   return (
-    <html lang={locale} className="dark">
-      {/* 
-        将所有 CSS Variable 预注入 html root 身上 
-        dark class 强行锁定酒店的黑色主题
-      */}
+    <html lang={locale}>
       <body
         className={`
           ${fontInter.variable} 
@@ -74,8 +73,10 @@ export default async function RootLayout({
           antialiased min-h-screen bg-white text-foreground flex flex-col
         `}
       >
-        <Header />
-        {children}
+        <NextIntlClientProvider messages={messages}>
+          <Header />
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );

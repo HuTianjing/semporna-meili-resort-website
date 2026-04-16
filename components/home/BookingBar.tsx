@@ -1,54 +1,71 @@
+'use client';
+
 import { useTranslations } from 'next-intl';
 
+/**
+ * Booking Bar - 白色毛玻璃效果预订栏
+ * 完全复刻四季酒店波拉波拉风格
+ */
 export function BookingBar() {
   const t = useTranslations('BookingBar');
 
   return (
-    <div className="w-full bg-white/70 dark:bg-black/30 backdrop-blur-xl shadow-lg border-y border-white/20 transition-all duration-300">
-      {/* max-w 控制了预订栏不要太过宽广 */}
-      <div className="max-w-[1400px] mx-auto px-4 py-4 md:py-5 flex flex-col lg:flex-row gap-4 items-end lg:items-center">
+    <div 
+      className="w-full"
+      style={{
+        backdropFilter: 'blur(13px)',
+        background: 'linear-gradient(180deg, hsla(0, 0%, 100%, 0.55), hsla(0, 0%, 100%, 0.75) 30%)',
+      }}
+    >
+      <div className="max-w-[1400px] mx-auto px-4 lg:px-8 py-3 flex flex-col lg:flex-row gap-3 lg:gap-4 items-stretch lg:items-end">
         
-        {/* Date Picker Mock */}
-        <div className="flex-1 w-full flex flex-col gap-1">
-          <label className="text-[11px] uppercase font-bold tracking-[0.1em] text-black/80 dark:text-white/80">
+        {/* Date Picker */}
+        <div className="flex-1 flex flex-col gap-1">
+          <label className="text-[10px] uppercase font-medium tracking-[0.15em] text-black/60">
             {t('dates')}
           </label>
-          <div className="w-full h-12 bg-white/40 dark:bg-white/10 backdrop-blur-sm border border-black/10 dark:border-white/10 px-4 flex items-center justify-between cursor-pointer hover:border-black/30 transition-colors">
-            <span className="text-sm font-sans text-black dark:text-white font-medium tracking-wider">
+          <div className="h-11 border-b border-black/20 flex items-center justify-between cursor-pointer hover:border-black/40 transition-colors bg-transparent">
+            <span className="text-sm font-sans text-black/80 tracking-wide">
               26-04-15 – 26-04-16
             </span>
-            <span className="text-black/50 dark:text-white/50 text-xs">✕</span>
+            <svg className="w-4 h-4 text-black/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M6 18L18 6M6 6l12 12" />
+            </svg>
           </div>
         </div>
 
-        {/* Guests Mock */}
-        <div className="flex-[0.8] w-full flex flex-col gap-1">
-          <label className="text-[11px] uppercase font-bold tracking-[0.1em] text-black/80 dark:text-white/80">
+        {/* Guests */}
+        <div className="flex-[0.7] flex flex-col gap-1">
+          <label className="text-[10px] uppercase font-medium tracking-[0.15em] text-black/60">
             {t('guests')}
           </label>
-          <div className="w-full h-12 bg-white/40 dark:bg-white/10 backdrop-blur-sm border border-black/10 dark:border-white/10 px-4 flex items-center justify-between cursor-pointer hover:border-black/30 transition-colors">
-            <span className="text-sm font-sans text-black dark:text-white font-medium tracking-wider">
+          <div className="h-11 border-b border-black/20 flex items-center justify-between cursor-pointer hover:border-black/40 transition-colors bg-transparent">
+            <span className="text-sm font-sans text-black/80 tracking-wide">
               1 房间 - 2 成人
             </span>
-            <span className="text-black/50 dark:text-white/50 text-xs">⌄</span>
+            <svg className="w-4 h-4 text-black/40" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19 9l-7 7-7-7" />
+            </svg>
           </div>
         </div>
 
-        {/* Promo Mock */}
-        <div className="flex-[0.8] w-full flex flex-col gap-1">
-          <label className="text-[11px] uppercase font-bold tracking-[0.1em] text-black/80 dark:text-white/80">
+        {/* Promo Code */}
+        <div className="flex-[0.7] flex flex-col gap-1">
+          <label className="text-[10px] uppercase font-medium tracking-[0.15em] text-black/60">
             {t('promo')}
           </label>
-          <div className="w-full h-12 bg-white/40 dark:bg-white/10 backdrop-blur-sm border border-black/10 dark:border-white/10 px-4 flex items-center cursor-text hover:border-black/30 transition-colors">
-            <span className="text-sm font-sans text-black/40 dark:text-white/40 italic">
-              {t('promoCode')}
-            </span>
+          <div className="h-11 border-b border-black/20 flex items-center cursor-text hover:border-black/40 transition-colors bg-transparent">
+            <input 
+              type="text" 
+              placeholder={t('promoCode')}
+              className="w-full bg-transparent text-sm font-sans text-black/80 placeholder:text-black/40 placeholder:italic outline-none tracking-wide"
+            />
           </div>
         </div>
 
         {/* Submit Button */}
-        <div className="flex-none lg:w-48 w-full mt-2 lg:mt-0 h-12 flex flex-col justify-end">
-          <button className="w-full h-12 bg-black hover:bg-neutral-800 text-white text-xs font-bold tracking-widest uppercase transition-colors">
+        <div className="flex-none lg:w-40">
+          <button className="w-full h-11 bg-[#1a1a1a] hover:bg-black text-white text-[11px] font-medium tracking-[0.2em] uppercase transition-colors">
             {t('submit')}
           </button>
         </div>
