@@ -27,7 +27,7 @@ export async function Footer() {
           </svg>
         </div>
         <span className="text-lg tracking-widest" style={{ fontFamily: 'var(--font-serif)' }}>
-          FOUR SEASONS
+          MEILI RESORT
         </span>
       </div>
 

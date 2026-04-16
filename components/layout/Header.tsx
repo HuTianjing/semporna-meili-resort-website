@@ -6,8 +6,11 @@ import Link from 'next/link';
 import { BookingBar } from '../home/BookingBar';
 
 /**
- * Header 组件 - 完全复刻四季酒店波拉波拉风格
- * 参考图片：纯深色背景 #1a1a1a
+ * Header 组件 - 美丽度假酒店
+ * 
+ * 根据文档要求：
+ * - 背景：深海蓝玻璃拟态 bg-[#003865]/60 backdrop-blur-md
+ * - 滚动时：添加阴影 shadow-lg
  */
 export function Header() {
   const t = useTranslations('Header');
@@ -24,24 +27,20 @@ export function Header() {
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 w-full transition-shadow duration-300 ${
-        scrolled ? 'shadow-lg shadow-black/20' : ''
+        scrolled ? 'shadow-lg shadow-black/30' : ''
       }`}
     >
-      {/* Main Nav - 深色背景 */}
-      <nav className="bg-[#1a1a1a]">
-        <div className="h-[76px] w-full flex items-center justify-between px-6 lg:px-10">
+      {/* Main Nav - 深海蓝玻璃拟态背景 */}
+      <nav className="bg-[#003865]/60 backdrop-blur-md">
+        <div className="h-[72px] w-full flex items-center justify-between px-6 lg:px-10">
           {/* Left: Logo + Brand */}
           <div className="flex items-center gap-3">
-            {/* Four Seasons Tree Logo - 精确复刻 */}
+            {/* 美丽酒店 Logo - 简约树形 */}
             <div className="w-8 h-12 flex items-center justify-center flex-shrink-0">
               <svg viewBox="0 0 32 48" fill="none" className="w-full h-full">
-                {/* 树干 */}
                 <line x1="16" y1="48" x2="16" y2="14" stroke="white" strokeWidth="0.8"/>
-                {/* 顶部三角 */}
                 <path d="M16 2 L9 13 L16 9 L23 13 Z" fill="white"/>
-                {/* 中间三角 */}
                 <path d="M16 12 L5 27 L16 20 L27 27 Z" fill="white"/>
-                {/* 底部三角 */}
                 <path d="M16 24 L1 44 L16 34 L31 44 Z" fill="white"/>
               </svg>
             </div>
@@ -79,7 +78,7 @@ export function Header() {
           </nav>
 
           {/* Right: CTA Button */}
-          <button className="hidden lg:block px-6 py-2.5 border border-white/80 text-white text-[12px] tracking-widest hover:bg-white hover:text-[#1a1a1a] transition-all duration-300">
+          <button className="hidden lg:block px-6 py-2.5 border border-white/80 text-white text-[12px] tracking-widest hover:bg-white hover:text-[#003865] transition-all duration-300">
             {t('checkRates')}
           </button>
 

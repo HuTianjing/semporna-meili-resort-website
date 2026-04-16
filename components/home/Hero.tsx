@@ -6,12 +6,13 @@ import { useTranslations } from 'next-intl';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 /**
- * Hero 组件 - 完全复刻四季酒店波拉波拉风格
+ * Hero 组件 - 美丽度假酒店
  * 
- * 核心交互：
+ * 根据文档要求：
  * 1. 右下角三个卡片随滚动向右平移并淡出
  * 2. 延迟2-3秒后，底部滚动提示区域淡入
- * 3. 垂直指示线循环动画
+ * 3. 垂直指示线循环下滑动画（白色高亮竖线从上到下丝滑滑落）
+ * 4. 下方介绍区块视差遮盖效果
  */
 export function Hero() {
   const t = useTranslations('Index');
@@ -38,7 +39,7 @@ export function Hero() {
   
   return (
     <section ref={heroRef} className="relative w-full">
-      {/* 主视觉区域 - 需要减去 Header + BookingBar 的高度后全屏 */}
+      {/* 主视觉区域 */}
       <div className="relative h-screen">
         {/* 全屏背景图 */}
         <div className="absolute inset-0 z-0">
@@ -54,7 +55,7 @@ export function Hero() {
           <div className="absolute inset-0 bg-black/20" />
         </div>
 
-        {/* 内容容器 - 需要 padding-top 来避开 Header */}
+        {/* 内容容器 */}
         <div className="relative z-10 h-full flex flex-col justify-end px-6 md:px-10 lg:px-12 pb-8 md:pb-12 lg:pb-16 pt-[140px]">
           
           {/* 左下角文案区域 */}
@@ -72,15 +73,15 @@ export function Hero() {
               {t('title')}
             </h1>
             
-            {/* 地址 */}
+            {/* 地址 - 仙本那，马来西亚 */}
             <p className="text-[11px] md:text-xs font-sans tracking-[0.2em] text-white/80 uppercase mb-4" style={{ textShadow: '0 1px 10px rgba(0,0,0,0.5)' }}>
-              MOTU TEHOTU - BP 547, 98730, BORA BORA, FRENCH POLYNESIA
+              SEMPORNA, SABAH 91308, MALAYSIA
             </p>
             
             {/* 联系方式链接 */}
             <div className="flex flex-wrap items-center gap-4 md:gap-6 text-sm">
-              <a href="tel:+68940603170" className="text-white underline underline-offset-4 decoration-white/50 hover:decoration-white transition-colors" style={{ textShadow: '0 1px 10px rgba(0,0,0,0.5)' }}>
-                +689 40 603 170
+              <a href="tel:+60123456789" className="text-white underline underline-offset-4 decoration-white/50 hover:decoration-white transition-colors" style={{ textShadow: '0 1px 10px rgba(0,0,0,0.5)' }}>
+                +60 12 345 6789
               </a>
               <a href="#location" className="text-white underline underline-offset-4 decoration-white/50 hover:decoration-white transition-colors" style={{ textShadow: '0 1px 10px rgba(0,0,0,0.5)' }}>
                 {t('location')}
@@ -135,7 +136,7 @@ export function Hero() {
             ))}
           </motion.div>
 
-          {/* 播放/暂停按钮 - 右下角（仅移动端显示）或居中底部（桌面端隐藏，因为有卡片） */}
+          {/* 播放/暂停按钮 - 移动端 */}
           <button 
             className="absolute bottom-8 right-6 md:bottom-12 md:right-10 lg:hidden z-10 w-10 h-10 rounded-full border border-white/50 flex items-center justify-center text-white hover:bg-white/10 transition-colors"
             aria-label="Pause video"
@@ -148,7 +149,7 @@ export function Hero() {
         </div>
       </div>
 
-      {/* 底部滚动提示区域 - 延迟淡入 */}
+      {/* 底部滚动提示区域 - 延迟淡入，米白色背景 */}
       <motion.div 
         className="relative bg-[#f8f7f4] flex flex-col items-center justify-center overflow-hidden"
         initial={{ height: 0, opacity: 0 }}
@@ -163,7 +164,7 @@ export function Hero() {
           {t('scrollDown')}
         </span>
         
-        {/* 垂直指示线 + 循环下滑动画 */}
+        {/* 垂直指示线 + 循环下滑动画（白色高亮竖线） */}
         <div className="relative h-8 w-[1px] bg-black/10 overflow-hidden">
           <motion.div 
             className="absolute top-0 left-0 w-full h-2 bg-black/50"

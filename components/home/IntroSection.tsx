@@ -1,17 +1,35 @@
-import { getTranslations } from 'next-intl/server';
+'use client';
+
+import { useRef } from 'react';
+import { useTranslations } from 'next-intl';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 /**
  * IntroSection - 酒店简介版块
  * 
  * 根据文档要求：
  * - 大面积留白，极简文字排版
- * - 视差遮盖效果：向下滚动时此区块缓慢向上滑动，覆盖首屏底部
+ * - 视差遮盖效果：向下滚动时此区块缓慢向上滑动，覆盖首屏底部的"滚动提示"区域
  */
-export async function IntroSection() {
-  const t = await getTranslations('Intro');
+export function IntroSection() {
+  const t = useTranslations('Intro');
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // 视差滚动效果
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "start start"]
+  });
+
+  // 向上平移效果 - 遮盖 Hero 底部
+  const y = useTransform(scrollYProgress, [0, 1], [100, 0]);
 
   return (
-    <section className="relative bg-white z-10">
+    <motion.section 
+      ref={sectionRef}
+      className="relative bg-white z-20"
+      style={{ y }}
+    >
       {/* 主内容区域 - 大量留白 */}
       <div className="py-24 md:py-32 lg:py-40">
         <div className="max-w-3xl mx-auto px-6 md:px-8 text-center">
@@ -34,6 +52,6 @@ export async function IntroSection() {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
