@@ -38,7 +38,6 @@ const fontNotoSerif = Noto_Serif_SC({
   weight: ['400', '600', '700'],
 });
 
-import SmoothScrolling from '@/components/SmoothScrolling';
 import { Header } from '@/components/layout/Header';
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
@@ -72,13 +71,11 @@ export default async function RootLayout({
           ${fontPlayfair.variable} 
           ${fontCormorant.variable} 
           ${fontNotoSerif.variable}
-          antialiased min-h-screen bg-background text-foreground flex flex-col
+          antialiased min-h-screen bg-white text-foreground flex flex-col
         `}
       >
-        <SmoothScrolling>
-          <Header />
-          {children}
-        </SmoothScrolling>
+        <Header />
+        {children}
       </body>
     </html>
   );

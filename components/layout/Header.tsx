@@ -1,58 +1,69 @@
-import { useTranslations } from 'next-intl';
-import { BookingBar } from '../home/BookingBar';
+import { getTranslations } from 'next-intl/server';
+import Link from 'next/link';
 
 /**
- * 满足：
- * 1. 禁止使用 fixed，而是使用 sticky 和负 top 控制滚动时略微向上隐藏 Utility Bar
- * 2. 主导航带黑色渐变至透明，Booking Bar 带毛玻璃。
+ * Header 组件 - 四季酒店风格
+ * 纯黑背景，简洁的导航布局
  */
-export function Header() {
-  const t = useTranslations('Header');
+export async function Header() {
+  const t = await getTranslations('Header');
   
   return (
-    // 使用 sticky top-[-2.5rem]：当页面向下滚动 40px(2.5rem) 后，顶部 Utility 栏隐藏，
-    // 而主导航与预订栏永久置顶，完美实现了要求中"页面上拉时，顶部会稍微向上隐藏"的效果。
-    <header className="sticky top-[-2.5rem] z-50 w-full flex flex-col pointer-events-auto">
-      
-      {/* Utility Bar (h-10 = 2.5rem = 40px) */}
-      <div className="h-10 bg-black/95 text-white/70 text-[11px] flex justify-between md:justify-end items-center px-4 md:px-12 gap-8 uppercase tracking-widest border-b border-white/5">
-        <span className="cursor-pointer hover:text-white transition-colors hidden sm:block">{t('allHotels')}</span>
-        <span className="cursor-pointer hover:text-white transition-colors">{t('login')}</span>
-        <span className="cursor-pointer hover:text-white transition-colors flex items-center gap-1">
-          {t('language')} <span className="text-[10px]">▼</span>
-        </span>
-      </div>
-
-      {/* Main Nav (h-20 = 80px) 带有渐变黑底 */}
-      <div className="h-24 bg-gradient-to-b from-black/90 via-black/60 to-black/20 backdrop-blur-[2px] w-full flex items-center justify-between px-4 md:px-12">
-        <div className="flex items-center gap-6">
-          {/* Logo Mock */}
-          <div className="w-8 h-12 border border-white/40 flex items-center justify-center">
-            <span className="text-white text-xs">LOGO</span>
+    <header className="fixed top-0 left-0 right-0 z-50 w-full bg-[#1a1a1a]">
+      {/* Main Nav */}
+      <div className="h-20 w-full flex items-center justify-between px-6 md:px-12">
+        {/* Left: Logo + Brand */}
+        <div className="flex items-center gap-4">
+          {/* Four Seasons Tree Logo */}
+          <div className="w-10 h-14 flex items-center justify-center">
+            <svg viewBox="0 0 40 56" fill="none" className="w-full h-full">
+              <path d="M20 0L20 56" stroke="white" strokeWidth="1"/>
+              <path d="M20 8L8 20L20 14L32 20L20 8Z" fill="white"/>
+              <path d="M20 18L6 32L20 24L34 32L20 18Z" fill="white"/>
+              <path d="M20 28L4 44L20 34L36 44L20 28Z" fill="white"/>
+            </svg>
           </div>
           
-          <div className="flex flex-col gap-1">
-            <span className="text-white font-serif text-lg tracking-[0.15em]">{t('brand')}</span>
-            <span className="text-white/80 text-[11px] font-sans tracking-widest uppercase">{t('resort')}</span>
+          <div className="flex flex-col">
+            <span className="text-white font-serif text-lg tracking-wide">{t('brand')}</span>
+            <span className="text-white/80 text-xs font-sans tracking-wider">{t('resort')}</span>
           </div>
         </div>
         
-        {/* Desktop Nav Links */}
-        <nav className="hidden xl:flex items-center gap-10 text-[13px] text-white font-medium tracking-[0.1em]">
-          <span className="cursor-pointer relative hover:text-white/80 transition-all font-bold 
-                           after:content-[''] after:absolute after:-bottom-4 after:left-0 after:w-full after:h-[2px] after:bg-white">
+        {/* Center: Desktop Nav Links */}
+        <nav className="hidden lg:flex items-center gap-8 text-sm text-white/90 font-normal tracking-wide">
+          <Link href="#overview" className="hover:text-white transition-colors py-2">
             {t('nav1')}
-          </span>
-          <span className="cursor-pointer text-white/90 hover:text-white transition-all">{t('nav2')}</span>
-          <span className="cursor-pointer text-white/90 hover:text-white transition-all">{t('nav3')}</span>
-          <span className="cursor-pointer text-white/90 hover:text-white transition-all">{t('nav4')}</span>
-          <span className="cursor-pointer text-white/90 hover:text-white transition-all">{t('nav5')}</span>
-          <span className="cursor-pointer text-white/90 hover:text-white transition-all">{t('nav6')}</span>
+          </Link>
+          <Link href="#villas" className="hover:text-white transition-colors py-2">
+            {t('nav2')}
+          </Link>
+          <Link href="#gallery" className="hover:text-white transition-colors py-2">
+            {t('nav3')}
+          </Link>
+          <Link href="#location" className="hover:text-white transition-colors py-2">
+            {t('nav4')}
+          </Link>
+          <Link href="#offers" className="hover:text-white transition-colors py-2">
+            {t('nav5')}
+          </Link>
+          <Link href="#contact" className="hover:text-white transition-colors py-2">
+            {t('nav6')}
+          </Link>
         </nav>
-      </div>
 
-      {/* Booking Bar (毛玻璃态) */}
-      <BookingBar />
+        {/* Right: CTA Button */}
+        <button className="hidden md:block px-6 py-3 border border-white text-white text-sm tracking-wider hover:bg-white hover:text-black transition-all duration-300">
+          {t('checkRates')}
+        </button>
+
+        {/* Mobile Menu Button */}
+        <button className="lg:hidden text-white p-2">
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
     </header>
   );
 }

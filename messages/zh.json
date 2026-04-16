@@ -1,13 +1,16 @@
 {
   "Index": {
     "title": "波拉波拉",
+    "resortName": "波拉波拉群岛四季度假酒店",
     "subtitle": "Semporna Blue Bay Resort",
     "description": "这座细沙环绕的静逸桃源位于法属波利尼西亚中心，坐拥海上的绝美景致。宽敞的水上别墅套房、海滨别墅和水底探险奇遇在此静候您的到来。",
     "exploreBtn": "探索别墅与套房",
-    "scrollDown": "向下滚动以唤醒更多美景"
+    "scrollDown": "向下滚动以唤醒更多美景",
+    "location": "位置",
+    "contactUs": "联系我们"
   },
   "LocaleLayout": {
-    "title": "仙本那蓝湾度假酒店 | Semporna Blue Bay Resort",
+    "title": "波拉波拉群岛四季度假酒店",
     "description": "法属波利尼西亚中心的全套房私人海岛天堂。"
   },
   "Header": {
@@ -21,7 +24,8 @@
     "nav3": "图片与视频",
     "nav4": "位置",
     "nav5": "优惠精选",
-    "nav6": "联系我们"
+    "nav6": "联系我们",
+    "checkRates": "查看房价"
   },
   "BookingBar": {
     "dates": "登记入住 - 退房",
@@ -29,5 +33,71 @@
     "promo": "促销",
     "promoCode": "促销代码",
     "submit": "查看房价"
+  },
+  "Intro": {
+    "tagline": "沐浴蓝天碧海，尽享人间天堂",
+    "description": "仙本那度假村坐落于亚里海中心的金色沙滩上，享有全球最具标志性的海洋景观。宽敞的水上别墅套房、海滨别墅为宾客营造出独一无二的奢华体验，将自然风光与精致服务完美融合。"
+  },
+  "Accommodation": {
+    "title": "别墅与套房",
+    "viewAll": "查看全部",
+    "beachfront": {
+      "title": "海景别墅套房及水疗泳池",
+      "description": "下榻私密无垠海景居所，坐拥环绕式露台与私人泳池。"
+    },
+    "overwater": {
+      "title": "水上别墅套房",
+      "description": "漂浮于蓝绿色泻湖之上，尽享水下玻璃地板的绝美体验。"
+    },
+    "suite": {
+      "title": "海滨别墅套房",
+      "description": "私人海滩直通大海，享受宁静与奢华的完美结合。"
+    }
+  },
+  "Gallery": {
+    "title": "精选图集",
+    "viewAll": "查看全部"
+  },
+  "Experience": {
+    "title": "探索波拉波拉，启享非凡",
+    "subtitle": "从传统文化探索到水上运动，在波拉波拉发现无限可能",
+    "learnMore": "了解更多",
+    "culture": {
+      "title": "HIRO'A TUMU 文化探险",
+      "description": "参与Hiro'a Tumu文化探险项目，深入探索大溪地传统文化。学习编织、雕刻、传统舞蹈，体验当地人的热情与智慧。"
+    },
+    "wellness": {
+      "title": "巴厘式瑜珈养生",
+      "description": "清晨在白沙滩上伴着海浪声进行瑜珈冥想，在专业导师的指导下，感受身心与自然的完美融合。"
+    },
+    "diving": {
+      "title": "海洋深潜之旅",
+      "description": "在专业教练的陪同下探索壮丽的珊瑚礁。目睹魔鬼鱼、海龟、热带鱼群在蔚蓝海水中自由遨游。"
+    }
+  },
+  "Dining": {
+    "tagline": "美食美酒，入在美景",
+    "title": "从朝饮到晚宴，品尝每一道精心准备的美味",
+    "description": "酒店的四间餐厅及酒吧为您提供丰富的美食选择，从地道的波利尼西亚风味到国际精致料理，满足您挑剔的味蕾。",
+    "destination": "一下子Bosphorus Île到Pélangues，随去回市集更远的角度和拥有别样的美味的单边旅游",
+    "atsohadora": "ATSOHADORA是酒店的标志性餐厅，提供融合当地食材与国际烹饪技艺的创意料理。",
+    "restaurant1": "海景餐厅",
+    "restaurant2": "池畔酒吧",
+    "restaurant3": "主厨餐厅"
+  },
+  "Footer": {
+    "explore": "探索",
+    "overview": "酒店概览",
+    "villas": "别墅与套房",
+    "dining": "餐饮美食",
+    "experience": "体验活动",
+    "contact": "联系方式",
+    "phone": "电话",
+    "email": "邮箱",
+    "followUs": "关注我们",
+    "copyright": "2024 Four Seasons Hotels and Resorts. 保留所有权利。",
+    "privacy": "隐私政策",
+    "terms": "使用条款",
+    "cookies": "Cookie 设置"
   }
 }
