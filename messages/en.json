@@ -1,13 +1,15 @@
 {
   "Index": {
     "title": "SEMPORNA",
-    "resortName": "MEILI RESORT SEMPORNA",
+    "resortName": "Meili Resort Semporna",
     "subtitle": "Semporna Blue Bay Resort",
     "description": "This tranquil haven is located in the heart of Semporna, boasting stunning sea views.",
     "exploreBtn": "EXPLORE VILLAS",
     "scrollDown": "SCROLL TO EXPLORE MORE",
     "location": "Location",
-    "contactUs": "Contact Us"
+    "contactUs": "Contact Us",
+    "villasLabel": "Villas & Suites",
+    "galleryLabel": "Photos & Videos"
   },
   "LocaleLayout": {
     "title": "Meili Resort Semporna",
@@ -15,21 +17,27 @@
   },
   "Header": {
     "brand": "MEILI RESORT",
-    "resort": "MEILI RESORT SEMPORNA",
+    "resort": "Meili Resort Semporna",
     "nav1": "OVERVIEW",
     "nav2": "VILLAS & SUITES",
     "nav3": "PHOTOS & VIDEOS",
     "nav4": "LOCATION",
     "nav5": "OFFERS",
     "nav6": "CONTACT US",
-    "checkRates": "CHECK RATES"
+    "checkRates": "CHECK RATES",
+    "allHotels": "All Hotels & Resorts",
+    "language": "English",
+    "show": "Show"
   },
   "BookingBar": {
-    "dates": "CHECK-IN - CHECK-OUT",
+    "dates": "CHECK-IN — CHECK-OUT",
     "guests": "GUESTS",
     "promo": "PROMO",
     "promoCode": "Promo Code",
-    "submit": "CHECK RATES"
+    "submit": "CHECK RATES",
+    "hide": "Hide",
+    "room": "Room",
+    "adults": "Adults"
   },
   "Intro": {
     "tagline": "WHERE THE BLUE SKY MEETS THE AZURE SEA",

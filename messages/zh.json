@@ -1,13 +1,15 @@
 {
   "Index": {
     "title": "仙本那",
-    "resortName": "美丽度假酒店 仙本那",
+    "resortName": "仙本那美丽度假酒店",
     "subtitle": "Semporna Blue Bay Resort",
     "description": "这座细沙环绕的静逸桃源位于仙本那蓝湾中心，坐拥海上的绝美景致。宽敞的水上别墅套房、海滨别墅和水底探险奇遇在此静候您的到来。",
     "exploreBtn": "探索别墅与套房",
     "scrollDown": "向下滚动探索更多",
     "location": "位置",
-    "contactUs": "联系我们"
+    "contactUs": "联系我们",
+    "villasLabel": "别墅与套房",
+    "galleryLabel": "图片视频"
   },
   "LocaleLayout": {
     "title": "美丽度假酒店 - 仙本那",
@@ -15,21 +17,27 @@
   },
   "Header": {
     "brand": "美丽度假酒店",
-    "resort": "MEILI RESORT SEMPORNA",
+    "resort": "仙本那美丽度假酒店",
     "nav1": "酒店概览",
     "nav2": "别墅与套房",
     "nav3": "图片与视频",
     "nav4": "位置",
     "nav5": "优惠精选",
     "nav6": "联系我们",
-    "checkRates": "查看房价"
+    "checkRates": "查看房价",
+    "allHotels": "所有酒店及度假酒店",
+    "language": "简体中文",
+    "show": "显示"
   },
   "BookingBar": {
-    "dates": "登记入住 - 退房",
+    "dates": "登记入住 — 退房",
     "guests": "宾客",
     "promo": "促销",
     "promoCode": "促销代码",
-    "submit": "查看房价"
+    "submit": "查看房价",
+    "hide": "隐藏",
+    "room": "房间",
+    "adults": "成人"
   },
   "Intro": {
     "tagline": "沐浴蓝天碧海，尽享人间天堂",
